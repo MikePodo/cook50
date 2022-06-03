@@ -18,7 +18,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
           rel="stylesheet"
         ></link>
-        <title>Cook50</title>
       </Head>
       <body>
         <Main />
