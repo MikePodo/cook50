@@ -10,10 +10,13 @@ const Navbar = () => {
   const { pathname } = router;
 
   return (
-    <div className={styles.container}>
+    <>
       <PageHead route={pathname} />
-      <h1>Cook50</h1>
-    </div>
+      <div className={styles.container}>
+        <h1>Cook50</h1>
+        <h3 onClick={() => router.push("/saved")}>Saved</h3>
+      </div>
+    </>
   );
 };
 

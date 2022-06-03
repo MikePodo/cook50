@@ -10,6 +10,14 @@ const axiosReq = async (route) => {
 };
 
 const routes = {
+  fetchList: () => {
+    return axiosReq(`recipes/v2?type=public&q=best`);
+  },
+
+  fetchMore: (url) => {
+    return axios.get(url).then(({ data }) => data);
+  },
+
   fetchRecipe: (query) => {
     return axiosReq(`recipes/v2?type=public&q=${query}`);
   },

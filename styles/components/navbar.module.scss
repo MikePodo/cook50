@@ -5,15 +5,17 @@
   height: 4rem;
   position: sticky;
   top: 0;
-  background: rgba(109, 163, 56, 0.99);
+  z-index: 5;
+  background: rgba(109, 163, 56, 0.975);
   //Frosted effect for supporting browsers
   @supports (backdrop-filter: blur(18px)) {
     background: rgba(109, 163, 56, 0.8);
     backdrop-filter: blur(18px);
   }
-  padding: 10px;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: $white;
   h1 {
     font-family: "Lobster", cursive;
@@ -21,6 +23,13 @@
     transition: opacity 0.2s;
     &:hover {
       opacity: 0.75;
+    }
+  }
+  h3 {
+    cursor: pointer;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
