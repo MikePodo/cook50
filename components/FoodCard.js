@@ -13,9 +13,8 @@ const FoodCard = ({ recipe, food }) => {
 
   useEffect(() => {
     const currentRecipes = JSON.parse(localStorage.getItem("savedRecipes"));
-    if (currentRecipes.some((food) => food.recipe.url === recipe.url)) {
+    currentRecipes.some((food) => food.recipe.url === recipe.url) &&
       setSaved(true);
-    }
   }, []);
 
   const handleSave = () => {

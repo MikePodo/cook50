@@ -7,7 +7,7 @@ import Navbar from "~components/Navbar";
 import FoodCard from "~components/FoodCard";
 
 const Home = () => {
-  const [foodData, setFoodData] = useState([]);
+  const [foodData, setFoodData] = useState({});
 
   useEffect(() => {
     const fetchFoodItems = async () => {

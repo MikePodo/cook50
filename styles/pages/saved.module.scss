@@ -1,0 +1,40 @@
+@import "~styles/variables.module.scss";
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  background: $white;
+}
+
+.foodListContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.noSavedContainer {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noSavedText {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.backBtn {
+  margin-top: 1.5rem;
+  background: $secondary;
+  color: $white;
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
