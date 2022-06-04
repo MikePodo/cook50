@@ -7,7 +7,10 @@ import Skeleton from "@mui/material/Skeleton";
 import { grey } from "~styles/variables.module.scss";
 import styles from "~styles/components/foodcard.module.scss";
 
+import RecipeModal from "~components/RecipeModal";
+
 const FoodCard = ({ recipe, food }) => {
+  const [recipeOpen, setRecipeOpen] = useState(false);
   const [saved, setSaved] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -44,6 +47,13 @@ const FoodCard = ({ recipe, food }) => {
 
   return (
     <div className={styles.container}>
+      <RecipeModal
+        open={recipeOpen}
+        setOpen={setRecipeOpen}
+        food={food}
+        saved={saved}
+        handleSave={handleSave}
+      />
       {!imgLoaded && (
         <Skeleton
           variant="rectangular"
@@ -118,7 +128,10 @@ const FoodCard = ({ recipe, food }) => {
           </div>
         </Tooltip>
         <Tooltip title="View Recipe" placement="bottom" arrow>
-          <div className={`${styles.button} ${styles.view}`}>
+          <div
+            className={`${styles.button} ${styles.view}`}
+            onClick={() => setRecipeOpen(true)}
+          >
             <FontAwesomeIcon
               icon="eye"
               className={`${styles.buttonIcon} ${styles.view}`}
