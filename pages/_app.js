@@ -12,6 +12,7 @@ import {
   faBookmark,
   faBookOpen,
   faEye,
+  faBlender,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark as faBookmarkOutline } from "@fortawesome/free-regular-svg-icons";
@@ -23,7 +24,8 @@ library.add(
   faBookmark,
   faBookmarkOutline,
   faBookOpen,
-  faEye
+  faEye,
+  faBlender
 );
 
 config.autoAddCss = false;

@@ -1,11 +1,16 @@
 import React from "react";
 import Head from "next/head";
 
-const PageHead = ({ route }) => {
+const PageHead = ({ router }) => {
+  const { pathname, query } = router;
   const getTitle = () => {
-    switch (route) {
+    switch (pathname) {
       case "/":
         return " | Home";
+      case "/saved":
+        return " | Saved Recipes";
+      case "/search":
+        return ` | ${query.q.replace(/\b(\w)/g, (s) => s.toUpperCase())}`;
       default:
         return "";
     }
