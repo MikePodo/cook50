@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import styles from "~styles/pages/index.module.scss";
 import recipeService from "~services/recipeService";
@@ -7,16 +7,8 @@ import Navbar from "~components/Navbar";
 import SearchBar from "~components/SearchBar";
 import FoodCard from "~components/FoodCard";
 
-const Home = () => {
-  const [foodData, setFoodData] = useState({});
-
-  useEffect(() => {
-    const fetchFoodItems = async () => {
-      const res = await recipeService.fetchList();
-      setFoodData(res);
-    };
-    fetchFoodItems();
-  }, []);
+const Home = ({ data }) => {
+  const [foodData, setFoodData] = useState(data);
 
   const fetchMore = async (url) => {
     const res = await recipeService.fetchMore(url);
@@ -48,5 +40,11 @@ const Home = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  const res = await recipeService.fetchList();
+
+  return { props: { data: res } };
+}
 
 export default Home;
