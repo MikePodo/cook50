@@ -33,6 +33,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <ToastContainer hideProgressBar={true} autoClose={1500} />
       <Component {...pageProps} />
+      <h2 className="footer">
+        &copy; 2022 Michael Podolsky - Created Using Edamam Recipe API
+      </h2>
     </>
   );
 }

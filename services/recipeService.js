@@ -11,7 +11,7 @@ const axiosReq = async (route) => {
 
 const routes = {
   fetchList: () => {
-    return axiosReq(`recipes/v2?type=public&q=best`);
+    return axiosReq(`recipes/v2?type=public&q=&diet=balanced`);
   },
 
   fetchMore: (url) => {

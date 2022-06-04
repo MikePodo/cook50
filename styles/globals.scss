@@ -5,10 +5,6 @@
   --toastify-text-color-light: #{$white} !important;
 }
 
-.Toastify__close-button {
-  color: $white !important;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -32,4 +28,14 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+.Toastify__close-button {
+  color: $white !important;
+}
+
+.footer {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 0 10px 10px;
 }
