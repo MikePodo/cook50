@@ -19,8 +19,7 @@ const Home = () => {
 
   const fetchMore = async (url) => {
     const res = await recipeService.fetchMore(url);
-    setFoodData(res);
-    window.scrollTo(0, 0);
+    setFoodData((prev) => ({ ...res, hits: [...prev.hits, ...res.hits] }));
   };
 
   return (
@@ -29,7 +28,7 @@ const Home = () => {
       <div className={styles.foodListContainer}>
         {foodData?.hits?.length > 0 &&
           foodData.hits.map((food, i) => (
-            <FoodCard key={i} food={food.recipe} />
+            <FoodCard key={i} food={food} recipe={food.recipe} />
           ))}
       </div>
       {foodData?.hits?.length > 0 && (
@@ -40,7 +39,7 @@ const Home = () => {
             }`}
             onClick={() => fetchMore(foodData._links.next.href)}
           >
-            Next Page
+            Load More
           </div>
         </div>
       )}

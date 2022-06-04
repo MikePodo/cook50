@@ -2,6 +2,9 @@ import "~styles/globals.scss";
 
 import { library, config } from "@fortawesome/fontawesome-svg-core";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   faStopwatch,
   faFire,
@@ -26,7 +29,12 @@ library.add(
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <ToastContainer hideProgressBar={true} autoClose={1500} />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
