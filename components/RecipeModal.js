@@ -128,8 +128,8 @@ const RecipeModal = ({ open, setOpen, food, saved, handleSave }) => {
 
             <div className={styles.ingredientsContainer}>
               <ul>
-                {food.recipe.ingredientLines.map((line) => (
-                  <li>{line}</li>
+                {food.recipe.ingredientLines.map((line, i) => (
+                  <li key={i}>{line}</li>
                 ))}
               </ul>
             </div>
