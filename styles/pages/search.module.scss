@@ -1,0 +1,45 @@
+@import "~styles/variables.module.scss";
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  background: $white;
+}
+
+.foodListContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.nextBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5rem;
+  padding: 0 3rem;
+  .nextBtn {
+    background: $secondary;
+    color: $white;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+  }
+}
+
+.showingResultsText {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 2rem;
+}

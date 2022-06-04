@@ -18,7 +18,7 @@ const routes = {
     return axios.get(url).then(({ data }) => data);
   },
 
-  fetchRecipe: (query) => {
+  searchRecipes: (query) => {
     return axiosReq(`recipes/v2?type=public&q=${query}`);
   },
 };

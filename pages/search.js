@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import styles from "~styles/pages/index.module.scss";
+import styles from "~styles/pages/search.module.scss";
 import recipeService from "~services/recipeService";
 
 import Navbar from "~components/Navbar";
 import SearchBar from "~components/SearchBar";
 import FoodCard from "~components/FoodCard";
 
-const Home = () => {
-  const [foodData, setFoodData] = useState({});
+const Search = ({ data, query }) => {
+  const [foodData, setFoodData] = useState(data);
 
   useEffect(() => {
-    const fetchFoodItems = async () => {
-      const res = await recipeService.fetchList();
-      setFoodData(res);
-    };
-    fetchFoodItems();
-  }, []);
+    setFoodData(data);
+  }, [query]);
 
   const fetchMore = async (url) => {
     const res = await recipeService.fetchMore(url);
@@ -27,6 +23,11 @@ const Home = () => {
     <div className={styles.screen}>
       <Navbar />
       <SearchBar />
+      <h3 className={styles.showingResultsText}>
+        {foodData?.hits?.length > 0
+          ? `Showing recipes for ${query}`
+          : `No recipes found from: ${query}`}
+      </h3>
       <div className={styles.foodListContainer}>
         {foodData?.hits?.length > 0 &&
           foodData.hits.map((food, i) => (
@@ -49,4 +50,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+export async function getServerSideProps(context) {
+  const query = context.query.q;
+
+  const res = await recipeService.searchRecipes(query);
+
+  return { props: { data: res, query } };
+}
+
+export default Search;

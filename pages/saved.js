@@ -6,7 +6,7 @@ import styles from "~styles/pages/saved.module.scss";
 import Navbar from "~components/Navbar";
 import FoodCard from "~components/FoodCard";
 
-const Home = () => {
+const Saved = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   const router = useRouter();
@@ -43,4 +43,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Saved;
