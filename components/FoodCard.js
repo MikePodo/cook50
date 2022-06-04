@@ -31,10 +31,10 @@ const FoodCard = ({ recipe, food }) => {
         (food) => food.recipe.url === recipe.url
       );
       newSavedRecipes.splice(index, 1);
-      toast("Removed Recipe From Saved");
+      toast("Unsaved Recipe");
     } else {
       newSavedRecipes = [...newSavedRecipes, { ...food }];
-      toast("Added Recipe To Saved");
+      toast("Saved Recipe");
     }
 
     localStorage.setItem("savedRecipes", JSON.stringify(newSavedRecipes));
