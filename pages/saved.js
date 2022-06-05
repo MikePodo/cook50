@@ -23,11 +23,14 @@ const Saved = () => {
     <div className={styles.screen}>
       <Navbar />
       {savedRecipes?.length > 0 ? (
-        <div className={styles.foodListContainer}>
-          {savedRecipes.map((food, i) => (
-            <FoodCard key={i} food={food} recipe={food.recipe} />
-          ))}
-        </div>
+        <>
+          <h3 className={styles.headerText}>Saved Recipes</h3>
+          <div className={styles.foodListContainer}>
+            {savedRecipes.map((food, i) => (
+              <FoodCard key={i} food={food} recipe={food.recipe} />
+            ))}
+          </div>
+        </>
       ) : (
         <div className={styles.noSavedContainer}>
           <h2 className={styles.noSavedText}>

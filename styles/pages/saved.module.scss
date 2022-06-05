@@ -6,6 +6,12 @@
   background: $white;
 }
 
+.headerText {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
 .foodListContainer {
   width: 100%;
   display: flex;
@@ -22,8 +28,8 @@
   align-items: center;
 }
 .noSavedText {
-  font-weight: 500;
-  font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 1.2rem;
   text-align: center;
 }
 

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Tooltip from "@mui/material/Tooltip";
+import Skeleton from "@mui/material/Skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { grey } from "~styles/variables.module.scss";
 import styles from "~styles/components/recipemodal.module.scss";
 
 const RecipeModal = ({ open, setOpen, food, saved, handleSave }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   return (
     <Modal open={open} onClose={() => setOpen(false)}>
       <div className={styles.screen}>
@@ -15,7 +19,17 @@ const RecipeModal = ({ open, setOpen, food, saved, handleSave }) => {
               className={styles.image}
               src={food.recipe.image}
               alt={food.recipe.label}
+              onLoad={() => setImgLoaded(true)}
+              style={{ display: imgLoaded ? "flex" : "none" }}
             />
+            {!imgLoaded && (
+              <Skeleton
+                variant="rectangular"
+                animation="wave"
+                className={styles.image}
+                sx={{ bgcolor: grey, width: "15rem" }}
+              />
+            )}
             <div className={styles.summaryInfo}>
               <h2 className={styles.title}>{food.recipe.label}</h2>
               <div className={styles.infoRow}>
