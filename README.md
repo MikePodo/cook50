@@ -18,6 +18,10 @@ The project is built using NextJS. Sass is utilized for styling pages and compon
 
 Axios is used to make asynchronous requests to Edamam's Recipe API. FontAwesome provides the site's icons. Material UI is utilized for its built-in components and styling. React Toastify brings in toast notifications to provide visual feedback to the user.
 
+#### File Structure:
+
+The file structure of the project is organized in such a way that any new developer should be able to quickly pick up the repository and be comforable finding various pages and components. The `pages` directory contains the website's pages, in which each file's name corresponds to the route name. The `components` directory contains all of the components used throughout the project. The `styles` directory contains all of the stylesheets, and is organized via `pages` and `components` directories within, in order to correspond each stylesheet to its appropriate page/component. Finally, the `services` directory contains the API information and route calling functions.
+
 #### API:
 
 The website relies on Edamam's Recipe API to receive data. This includes the querying route, which takes in a user query and returns a list of corresponding recipes.
@@ -25,6 +29,10 @@ The website relies on Edamam's Recipe API to receive data. This includes the que
 #### Saved Recipes Integration:
 
 User-saved recipes are handled via the brower's localStorage. A stringified array is stored which contains a list of saved recipes, which is ultimately parsed and shown to the user when accessed.
+
+#### Design Choices:
+
+The website finds a balance between simplistic and full of details. The color palette was updated many times throughout the development process until the final result was reached.
 
 #### Mobile Responsiveness:
 
