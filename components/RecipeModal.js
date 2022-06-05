@@ -123,7 +123,10 @@ const RecipeModal = ({ open, setOpen, food, saved, handleSave }) => {
                     type: "caution",
                   })),
                 ].map((label) => (
-                  <div className={`${styles.label} ${styles[label.type]}`}>
+                  <div
+                    className={`${styles.label} ${styles[label.type]}`}
+                    key={label.title}
+                  >
                     <p>{label.title}</p>
                   </div>
                 ))}
