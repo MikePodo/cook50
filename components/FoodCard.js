@@ -20,7 +20,8 @@ const FoodCard = ({ recipe, food }) => {
       setSaved(true);
   }, []);
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.stopPropagation();
     let newSavedRecipes = [];
     const currentRecipes = JSON.parse(localStorage.getItem("savedRecipes"));
     if (currentRecipes) {
@@ -46,7 +47,7 @@ const FoodCard = ({ recipe, food }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <RecipeModal
         open={recipeOpen}
         setOpen={setRecipeOpen}
@@ -54,92 +55,61 @@ const FoodCard = ({ recipe, food }) => {
         saved={saved}
         handleSave={handleSave}
       />
-      {!imgLoaded && (
-        <Skeleton
-          variant="rectangular"
-          animation="wave"
+      <div className={styles.container} onClick={() => setRecipeOpen(true)}>
+        {!imgLoaded && (
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            className={styles.image}
+            sx={{ bgcolor: grey }}
+          />
+        )}
+        <img
+          src={recipe.image}
+          alt={recipe.label}
           className={styles.image}
-          sx={{ bgcolor: grey }}
+          onLoad={() => setImgLoaded(true)}
+          style={{ display: imgLoaded ? "flex" : "none" }}
         />
-      )}
-      <img
-        src={recipe.image}
-        alt={recipe.label}
-        className={styles.image}
-        onLoad={() => setImgLoaded(true)}
-        style={{ display: imgLoaded ? "flex" : "none" }}
-      />
-      <div className={styles.infoContainer}>
-        <h1 className={styles.title}>{recipe.label}</h1>
-        <div className={styles.infoRow}>
-          <FontAwesomeIcon icon="stopwatch" className={styles.icon} />
-          <p className={styles.infoText}>
-            <span>{recipe.totalTime}</span> minute
-            {recipe.totalTime === 1 ? "" : "s"}
-          </p>
+        <div className={styles.infoContainer}>
+          <h1 className={styles.title}>{recipe.label}</h1>
+          <div className={styles.infoRow}>
+            <FontAwesomeIcon icon="stopwatch" className={styles.icon} />
+            <p className={styles.infoText}>
+              <span>{recipe.totalTime}</span> minute
+              {recipe.totalTime === 1 ? "" : "s"}
+            </p>
+          </div>
+          <div className={styles.infoRow}>
+            <FontAwesomeIcon icon="fire" className={styles.icon} />
+            <p className={styles.infoText}>
+              <span>{parseInt(recipe.calories).toLocaleString()}</span> calorie
+              {recipe.calories === 1 ? "" : "s"}
+            </p>
+          </div>
+          <div className={styles.infoRow}>
+            <FontAwesomeIcon icon="pepper-hot" className={styles.icon} />
+            <p className={styles.infoText}>
+              <span>{recipe.ingredients?.length || 0}</span> ingredient
+              {recipe.ingredients?.length === 1 ? "" : "s"}
+            </p>
+          </div>
         </div>
-        <div className={styles.infoRow}>
-          <FontAwesomeIcon icon="fire" className={styles.icon} />
-          <p className={styles.infoText}>
-            <span>{parseInt(recipe.calories).toLocaleString()}</span> calorie
-            {recipe.calories === 1 ? "" : "s"}
-          </p>
-        </div>
-        <div className={styles.infoRow}>
-          <FontAwesomeIcon icon="pepper-hot" className={styles.icon} />
-          <p className={styles.infoText}>
-            <span>{recipe.ingredients?.length || 0}</span> ingredient
-            {recipe.ingredients?.length === 1 ? "" : "s"}
-          </p>
-        </div>
-        <div className={styles.healthLabelsContainer}>
-          {recipe.healthLabels.map((label, i) => (
-            <React.Fragment key={i}>
-              {i < 4 && (
-                <div className={styles.healthLabel}>
-                  <p>{label}</p>
-                </div>
-              )}
-            </React.Fragment>
-          ))}
+        <div className={styles.saveButtonContainer}>
+          <Tooltip title="Save Recipe" placement="bottom" arrow>
+            <div
+              className={`${styles.button} ${styles.save}`}
+              onClick={handleSave}
+            >
+              <FontAwesomeIcon
+                icon={[saved ? "fas " : "far", "bookmark"]}
+                className={styles.buttonIcon}
+              />
+            </div>
+          </Tooltip>
         </div>
       </div>
-      <div className={styles.buttonsContainer}>
-        <Tooltip title="Save Recipe" placement="bottom" arrow>
-          <div
-            className={`${styles.button} ${styles.save}`}
-            onClick={handleSave}
-          >
-            <FontAwesomeIcon
-              icon={[saved ? "fas " : "far", "bookmark"]}
-              className={`${styles.buttonIcon} ${styles.save}`}
-            />
-          </div>
-        </Tooltip>
-        <Tooltip title="Open Recipe" placement="bottom" arrow>
-          <div
-            className={`${styles.button} ${styles.recipe}`}
-            onClick={handleOpenRecipe}
-          >
-            <FontAwesomeIcon
-              icon="book-open"
-              className={`${styles.buttonIcon} ${styles.recipe}`}
-            />
-          </div>
-        </Tooltip>
-        <Tooltip title="View Recipe" placement="bottom" arrow>
-          <div
-            className={`${styles.button} ${styles.view}`}
-            onClick={() => setRecipeOpen(true)}
-          >
-            <FontAwesomeIcon
-              icon="eye"
-              className={`${styles.buttonIcon} ${styles.view}`}
-            />
-          </div>
-        </Tooltip>
-      </div>
-    </div>
+    </>
   );
 };
 

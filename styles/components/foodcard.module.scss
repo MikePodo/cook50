@@ -1,12 +1,19 @@
 @import "~styles/variables.module.scss";
 
 .container {
-  width: 15rem;
+  width: 17rem;
+  position: relative;
   background: #ffffff;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin: 1.5rem 2rem;
+  box-shadow: rgba(112, 112, 112, 0.2) 0px 7px 29px 0px;
+  margin: 1rem;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover {
+    box-shadow: rgba(112, 112, 112, 0.5) 0px 7px 29px 0px;
+    transform: translateY(-3px);
+  }
 }
 
 .image {
@@ -21,33 +28,34 @@
 
 .infoContainer {
   width: 100%;
-  padding: 5px 10px;
+  padding: 5px;
 }
 
 .title {
   font-size: 1.1rem;
   font-weight: 500;
   text-align: center;
-  color: $black;
+  color: $primaryDark;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .infoRow {
   display: flex;
   align-items: center;
   color: $darkGrey;
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.3rem 5px;
   .icon {
     color: $grey;
     width: 1rem;
   }
   .infoText {
     margin-left: 0.5rem;
+    font-weight: 300;
     span {
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 }
@@ -66,45 +74,32 @@
     p {
       color: $white;
       font-size: 0.75rem;
+      font-weight: 300;
     }
   }
 }
 
-.buttonsContainer {
-  margin-top: calc(1rem - 5px);
-  width: 100%;
-  display: flex;
+.saveButtonContainer {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .button {
-  width: calc(100% / 3);
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background: $secondary;
+  transition: background 0.2s ease;
   &:hover {
-    opacity: 0.8;
-  }
-  &.save {
-    background: $secondary;
-  }
-  &.recipe {
-    background: $tertiary;
-  }
-  &.view {
-    background: $primary;
+    background: $secondaryDark;
   }
   .buttonIcon {
     color: $white;
-    &.save {
-      width: 0.9rem;
-    }
-    &.recipe {
-      width: 1.3rem;
-    }
-    &.view {
-      width: 1.3rem;
-    }
+    width: 1rem;
   }
 }

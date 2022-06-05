@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   height: 17rem;
-  border-bottom: 1px solid $grey;
+
   @media screen and (max-width: 800px) {
     height: unset;
     flex-direction: column;
@@ -36,6 +36,7 @@
 .image {
   height: 100%;
   object-fit: cover;
+  border-bottom-right-radius: 10px;
   @media screen and (max-width: 800px) {
     width: 100%;
     height: 15rem;
@@ -57,6 +58,7 @@
 .title {
   font-weight: 500;
   font-size: 1.3rem;
+  color: $primaryDark;
   @media screen and (max-width: 800px) {
     font-size: 1rem;
   }
@@ -72,11 +74,12 @@
   }
   .infoText {
     margin-left: 0.5rem;
+    font-weight: 300;
     @media screen and (max-width: 800px) {
       font-size: 0.85rem;
     }
     span {
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 }
@@ -96,14 +99,20 @@
     margin-left: 10px;
     color: $white;
     cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
+    transition: background 0.2s ease;
     &.recipe {
       background: $primary;
     }
     &.save {
       background: $secondary;
+    }
+    &:hover {
+      &.recipe {
+        background: $primaryDark;
+      }
+      &.save {
+        background: $secondaryDark;
+      }
     }
     .icon {
       height: 1rem;
@@ -129,7 +138,7 @@
   flex-direction: column;
   justify-content: space-between;
   h3 {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.8rem;
     @media screen and (max-width: 800px) {
       font-size: 0.7rem;
@@ -169,7 +178,6 @@
 }
 
 .ingredientsContainer {
-  border-left: 1px solid $grey;
   display: flex;
   flex-direction: column;
   padding-right: 10px;
@@ -181,6 +189,7 @@
     color: $darkGrey;
     margin-bottom: 5px;
     font-size: 1rem;
+    font-weight: 300;
     white-space: wrap;
     @media screen and (max-width: 800px) {
       font-size: 0.85rem;

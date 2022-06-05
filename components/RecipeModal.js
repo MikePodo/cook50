@@ -95,32 +95,23 @@ const RecipeModal = ({ open, setOpen, food, saved, handleSave }) => {
           <div className={styles.detailsContainer}>
             <div className={styles.labelsContainer}>
               <div className={styles.labelsFlexContainer}>
-                {food.recipe.healthLabels.map((label, i) => (
-                  <React.Fragment key={i}>
-                    {i < 10 && (
-                      <div className={`${styles.label} ${styles.health}`}>
-                        <p>{label}</p>
-                      </div>
-                    )}
-                  </React.Fragment>
-                ))}
-                {food.recipe.dietLabels.map((label, i) => (
-                  <React.Fragment key={i}>
-                    {i < 10 && (
-                      <div className={`${styles.label} ${styles.diet}`}>
-                        <p>{label}</p>
-                      </div>
-                    )}
-                  </React.Fragment>
-                ))}
-                {food.recipe.cautions.map((label, i) => (
-                  <React.Fragment key={i}>
-                    {i < 10 && (
-                      <div className={`${styles.label} ${styles.caution}`}>
-                        <p>{label}</p>
-                      </div>
-                    )}
-                  </React.Fragment>
+                {[
+                  ...food.recipe.healthLabels.slice(0, 5).map((title) => ({
+                    title,
+                    type: "health",
+                  })),
+                  ...food.recipe.dietLabels.map((title) => ({
+                    title,
+                    type: "diet",
+                  })),
+                  ...food.recipe.cautions.map((title) => ({
+                    title,
+                    type: "caution",
+                  })),
+                ].map((label) => (
+                  <div className={`${styles.label} ${styles[label.type]}`}>
+                    <p>{label.title}</p>
+                  </div>
                 ))}
               </div>
               <h3>Source: {food.recipe.source}</h3>

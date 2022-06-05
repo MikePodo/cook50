@@ -1,7 +1,7 @@
 @import "~styles/variables.module.scss";
 
 :root {
-  --toastify-color-light: #{$tertiary} !important;
+  --toastify-color-light: #{$primary} !important;
   --toastify-text-color-light: #{$white} !important;
 }
 
@@ -12,7 +12,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Red Hat Display", sans-serif;
+  font-family: "Poppins", sans-serif;
   background: $white;
 }
 
