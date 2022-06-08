@@ -1,7 +1,5 @@
 ## Cook50 - Michael Podolsky
 
----
-
 #### Video Demo:
 
 https://youtube.com (to be updated)
